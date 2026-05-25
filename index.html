@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Traderherz – Market Intelligence</title>
+<title id="meta-title">Traderherz – Market Intelligence</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,6 +65,32 @@ body::before {
   padding: 0 32px 100px;
 }
 
+/* LANG SWITCHER */
+.lang-container {
+  position: absolute;
+  top: 30px;
+  right: 32px;
+  z-index: 10;
+}
+
+.lang-select {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.lang-select:hover {
+  border-color: var(--gold);
+}
+
 /* HERO */
 
 header {
@@ -75,20 +101,6 @@ header {
   align-items: center;
   text-align: center;
   padding: 100px 0 70px;
-}
-
-.hero-badge {
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--gold);
-  border: 1px solid rgba(212,175,55,0.22);
-  background: rgba(212,175,55,0.07);
-  padding: 12px 20px;
-  border-radius: 999px;
-  margin-bottom: 38px;
-  backdrop-filter: blur(12px);
 }
 
 .logo-ring {
@@ -382,12 +394,6 @@ h1 span {
   border: 1px solid rgba(34,197,94,0.2);
 }
 
-.bias.neutral {
-  color: var(--orange);
-  background: rgba(245,158,11,0.08);
-  border: 1px solid rgba(245,158,11,0.2);
-}
-
 .card-title {
   font-size: 34px;
   line-height: 1.1;
@@ -445,10 +451,6 @@ h1 span {
   color: var(--gold);
 }
 
-.coming-soon {
-  opacity: 0.55;
-}
-
 /* FOOTER */
 
 footer {
@@ -478,43 +480,17 @@ footer {
 /* RESPONSIVE */
 
 @media (max-width: 980px) {
-
-  .hero-stats,
-  .value-section {
-    grid-template-columns: 1fr;
-  }
-
-  .dashboard-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
+  .hero-stats, .value-section { grid-template-columns: 1fr; }
+  .dashboard-header { flex-direction: column; align-items: flex-start; }
 }
 
 @media (max-width: 768px) {
-
-  .wrapper {
-    padding: 0 20px 80px;
-  }
-
-  header {
-    min-height: auto;
-    padding-top: 80px;
-  }
-
-  .tagline {
-    font-size: 17px;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  footer {
-    flex-direction: column;
-    text-align: center;
-  }
-
+  .wrapper { padding: 0 20px 80px; }
+  header { min-height: auto; padding-top: 100px; }
+  .tagline { font-size: 17px; }
+  .grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; text-align: center; }
+  .lang-container { top: 20px; right: 20px; }
 }
 
 </style>
@@ -522,6 +498,14 @@ footer {
 <body>
 
 <div class="wrapper">
+
+  <div class="lang-container">
+    <select class="lang-select" id="langSelect" onchange="changeLanguage(this.value)">
+      <option value="de">DE</option>
+      <option value="en">EN</option>
+      <option value="es">ES</option>
+    </select>
+  </div>
 
 <header>
 
@@ -533,34 +517,28 @@ footer {
 
   <h1>
     Traderherz
-    <span>Market Intelligence</span>
+    <span id="txt-sub-title">Market Intelligence</span>
   </h1>
 
-  <p class="tagline">
+  <p class="tagline" id="txt-tagline">
     Professionelle SP500-Analysen, präzise Trading-Setups und datenbasierte Marktstruktur für ambitionierte Trader.
   </p>
 
   <div class="hero-stats">
 
     <div class="stat-box">
-      <strong>Marktstruktur</strong>
-      <span>
-        Institutionelle Einordnung des SP500 mit Fokus auf Liquidität, Bias und relevante Preiszonen.
-      </span>
+      <strong id="txt-stat1-title">Marktstruktur</strong>
+      <span id="txt-stat1-desc">Institutionelle Einordnung des SP500 mit Fokus auf Liquidität, Bias und relevante Preiszonen.</span>
     </div>
 
     <div class="stat-box">
-      <strong>Weekly Setups</strong>
-      <span>
-        Präzise vorbereitete Trading-Szenarien für strukturierte Entscheidungen.
-      </span>
+      <strong id="txt-stat2-title">Weekly Setups</strong>
+      <span id="txt-stat2-desc">Präzise vorbereitete Trading-Szenarien für strukturierte Entscheidungen.</span>
     </div>
 
     <div class="stat-box">
       <strong>Makro-Fokus</strong>
-      <span>
-        CPI, PCE, FOMC und relevante Wirtschaftsdaten mit klarem Marktbezug.
-      </span>
+      <span id="txt-stat3-desc">CPI, PCE, FOMC und relevante Wirtschaftsdaten mit klarem Marktbezug.</span>
     </div>
 
   </div>
@@ -568,9 +546,9 @@ footer {
 </header>
 
 <section class="section-title">
-  <span>Trading Research</span>
-  <h2>Professionelle Marktanalyse</h2>
-  <p>
+  <span id="txt-sec-badge">Trading Research</span>
+  <h2 id="txt-sec-title">Professionelle Marktanalyse</h2>
+  <p id="txt-sec-desc">
     Traderherz verbindet institutionelle Marktstruktur mit hochwertigen Futures-Analysen und klaren Trading-Setups.
   </p>
 </section>
@@ -578,24 +556,18 @@ footer {
 <section class="value-section">
 
   <div class="value-card">
-    <h3>Marktstruktur</h3>
-    <p>
-      Klare Einordnung des SP500 mit Fokus auf Liquidität, Marktphasen und institutionelle Preiszonen.
-    </p>
+    <h3 id="txt-card1-title">Marktstruktur</h3>
+    <p id="txt-card1-desc">Klare Einordnung des SP500 mit Fokus auf Liquidität, Marktphasen und institutionelle Preiszonen.</p>
   </div>
 
   <div class="value-card">
-    <h3>Trading Setups</h3>
-    <p>
-      Präzise vorbereitete Szenarien für die Handelswoche mit strukturiertem Bias und klarer Planung.
-    </p>
+    <h3 id="txt-card2-title">Trading Setups</h3>
+    <p id="txt-card2-desc">Präzise vorbereitete Szenarien für die Handelswoche mit strukturiertem Bias und klarer Planung.</p>
   </div>
 
   <div class="value-card">
-    <h3>Makro-Events</h3>
-    <p>
-      CPI, PCE, FOMC und wichtige Wirtschaftsdaten im Fokus für professionelle Marktvorbereitung.
-    </p>
+    <h3 id="txt-card3-title">Makro-Events</h3>
+    <p id="txt-card3-desc">CPI, PCE, FOMC und wichtige Wirtschaftsdaten im Fokus für professionelle Marktvorbereitung.</p>
   </div>
 
 </section>
@@ -603,50 +575,34 @@ footer {
 <section>
 
   <div class="dashboard-header">
-
     <div>
-      <div class="dashboard-title">Weekly Market Briefings</div>
+      <div class="dashboard-title" id="txt-dash-title">Weekly Market Briefings</div>
     </div>
-
     <div class="market-status">
       <div class="market-dot"></div>
-      Market Active
+      <span id="txt-market-status">Market Active</span>
     </div>
-
   </div>
 
   <div class="grid">
 
     <a class="card" href="sp500.html">
-
       <div class="card-top">
-        <div class="card-kw">KW22 · 2026</div>
-        <div class="bias bull">Bullish</div>
+        <div class="card-kw"><span id="txt-kw-label">KW</span>22 · 2026</div>
+        <div class="bias bull" id="txt-bias-label">Bullish</div>
       </div>
-
-      <div class="card-title">
-        25. – 29. Mai
-      </div>
-
-      <div class="card-date">
-        Memorial Day · PCE · GDP Q1 · Chicago PMI
-      </div>
-
+      <div class="card-title">25. – 29. Mai</div>
+      <div class="card-date">Memorial Day · PCE · GDP Q1 · Chicago PMI</div>
       <div class="card-tags">
         <span class="tag">PCE</span>
         <span class="tag">GDP</span>
         <span class="tag">Fed</span>
         <span class="tag">Macro</span>
       </div>
-
       <div class="card-footer">
-        <div class="footer-text">
-          Vollständige Wochenanalyse öffnen
-        </div>
-
+        <div class="footer-text" id="txt-footer-link">Vollständige Wochenanalyse öffnen</div>
         <div class="arrow">↗</div>
       </div>
-
     </a>
 
   </div>
@@ -654,18 +610,142 @@ footer {
 </section>
 
 <footer>
-
-  <div class="footer-brand">
-    Traderherz
-  </div>
-
-  <div class="footer-meta">
-    SP500 · Futures · Market Intelligence · Trading Research
-  </div>
-
+  <div class="footer-brand">Traderherz</div>
+  <div class="footer-meta">SP500 · Futures · Market Intelligence · Trading Research</div>
 </footer>
 
 </div>
+
+<script>
+// DIE ÜBERSETZUNGSDATEN
+const translations = {
+  de: {
+    metaTitle: "Traderherz – Market Intelligence",
+    subTitle: "Market Intelligence",
+    tagline: "Professionelle SP500-Analysen, präzise Trading-Setups und datenbasierte Marktstruktur für ambitionierte Trader.",
+    stat1Title: "Marktstruktur",
+    stat1Desc: "Institutionelle Einordnung des SP500 mit Fokus auf Liquidität, Bias und relevante Preiszonen.",
+    stat2Title: "Weekly Setups",
+    stat2Desc: "Präzise vorbereitete Trading-Szenarien für strukturierte Entscheidungen.",
+    stat3Desc: "CPI, PCE, FOMC und relevante Wirtschaftsdaten mit klarem Marktbezug.",
+    secBadge: "Trading Research",
+    secTitle: "Professionelle Marktanalyse",
+    secDesc: "Traderherz verbindet institutionelle Marktstruktur mit hochwertigen Futures-Analysen und klaren Trading-Setups.",
+    card1Title: "Marktstruktur",
+    card1Desc: "Klare Einordnung des SP500 mit Fokus auf Liquidität, Marktphasen und institutionelle Preiszonen.",
+    card2Title: "Trading Setups",
+    card2Desc: "Präzise vorbereitete Szenarien für die Handelswoche mit strukturiertem Bias und klarer Planung.",
+    card3Title: "Makro-Events",
+    card3Desc: "CPI, PCE, FOMC und wichtige Wirtschaftsdaten im Fokus für professionelle Marktvorbereitung.",
+    dashTitle: "Weekly Market Briefings",
+    marketStatus: "Markt Aktiv",
+    kwLabel: "KW ",
+    biasLabel: "Bullish",
+    footerLink: "Vollständige Wochenanalyse öffnen"
+  },
+  en: {
+    metaTitle: "Traderherz – Market Intelligence",
+    subTitle: "Market Intelligence",
+    tagline: "Professional SP500 analysis, precise trading setups and data-driven market structure for ambitious traders.",
+    stat1Title: "Market Structure",
+    stat1Desc: "Institutional analysis of the SP500 focusing on liquidity, bias and key price zones.",
+    stat2Title: "Weekly Setups",
+    stat2Desc: "Pre-planned trading scenarios designed for structured decision-making.",
+    stat3Desc: "CPI, PCE, FOMC and key macroeconomic data with clear market relevance.",
+    secBadge: "Trading Research",
+    secTitle: "Professional Market Analysis",
+    secDesc: "Traderherz combines institutional market structure with high-quality futures analysis and clear execution frameworks.",
+    card1Title: "Market Structure",
+    card1Desc: "Clear categorization of the SP500 with a focus on liquidity, market phases, and institutional pools.",
+    card2Title: "Trading Setups",
+    card2Desc: "Highly detailed trading ideas for the upcoming week featuring systematic bias and solid planning.",
+    card3Title: "Macro Events",
+    card3Desc: "Focus on CPI, PCE, FOMC, and critical economic data releases for elite market preparation.",
+    dashTitle: "Weekly Market Briefings",
+    marketStatus: "Market Active",
+    kwLabel: "CW ",
+    biasLabel: "Bullish",
+    footerLink: "Open full weekly briefing"
+  },
+  es: {
+    metaTitle: "Traderherz – Intelligence de Mercado",
+    subTitle: "Intelligence de Mercado",
+    tagline: "Análisis profesional del SP500, configuraciones de trading precisas y estructura de mercado basada en datos para traders ambiciosos.",
+    stat1Title: "Estructura de Mercado",
+    stat1Desc: "Clasificación institucional del SP500 con enfoque en la liquidez, el sesgo y las zonas de precios clave.",
+    stat2Title: "Setups Semanales",
+    stat2Desc: "Escenarios de trading preparados con precisión para la toma de decisiones estructuradas.",
+    stat3Desc: "CPI, PCE, FOMC y datos económicos relevantes con una clara relación con el mercado.",
+    secBadge: "Investigación de Trading",
+    secTitle: "Análisis de Mercado Profesional",
+    secDesc: "Traderherz combina la estructura del mercado institucional con análisis de futuros de alta calidad y planes de trading claros.",
+    card1Title: "Estructura de Mercado",
+    card1Desc: "Clasificación clara del SP500 centrada en la liquidez, las fases del mercado y las zonas de precios institucionales.",
+    card2Title: "Setups de Trading",
+    card2Desc: "Escenarios preparados con precisión para la semana de negociación con un sesgo estructurado y una planificación clara.",
+    card3Title: "Eventos Macro",
+    card3Desc: "Enfoque en CPI, PCE, FOMC e importantes datos económicos para una preparación profesional del mercado.",
+    dashTitle: "Informes Semanales de Mercado",
+    marketStatus: "Mercado Activo",
+    kwLabel: "Sem. ",
+    biasLabel: "Alcista",
+    footerLink: "Abrir análisis semanal completo"
+  }
+};
+
+// FUNKTION ZUM UMSCHALTEN
+function changeLanguage(lang) {
+  if (!translations[lang]) lang = 'de'; // Fallback auf Deutsch
+  
+  document.getElementById('langSelect').value = lang;
+  document.getElementById('meta-title').innerText = translations[lang].metaTitle;
+  document.getElementById('txt-sub-title').innerText = translations[lang].subTitle;
+  document.getElementById('txt-tagline').innerText = translations[lang].tagline;
+  document.getElementById('txt-stat1-title').innerText = translations[lang].stat1Title;
+  document.getElementById('txt-stat1-desc').innerText = translations[lang].stat1Desc;
+  document.getElementById('txt-stat2-title').innerText = translations[lang].stat2Title;
+  document.getElementById('txt-stat2-desc').innerText = translations[lang].stat2Desc;
+  document.getElementById('txt-stat3-desc').innerText = translations[lang].stat3Desc;
+  document.getElementById('txt-sec-badge').innerText = translations[lang].secBadge;
+  document.getElementById('txt-sec-title').innerText = translations[lang].secTitle;
+  document.getElementById('txt-sec-desc').innerText = translations[lang].secDesc;
+  document.getElementById('txt-card1-title').innerText = translations[lang].card1Title;
+  document.getElementById('txt-card1-desc').innerText = translations[lang].card1Desc;
+  document.getElementById('txt-card2-title').innerText = translations[lang].card2Title;
+  document.getElementById('txt-card2-desc').innerText = translations[lang].card2Desc;
+  document.getElementById('txt-card3-title').innerText = translations[lang].card3Title;
+  document.getElementById('txt-card3-desc').innerText = translations[lang].card3Desc;
+  document.getElementById('txt-dash-title').innerText = translations[lang].dashTitle;
+  document.getElementById('txt-market-status').innerText = translations[lang].marketStatus;
+  document.getElementById('txt-kw-label').innerText = translations[lang].kwLabel;
+  document.getElementById('txt-bias-label').innerText = translations[lang].biasLabel;
+  document.getElementById('txt-footer-link').innerText = translations[lang].footerLink;
+  
+  // Speichert die Auswahl für den nächsten Besuch
+  localStorage.setItem('preferredLang', lang);
+}
+
+// AUTOMATISCHE ERKENNUNG BEIM LADEN
+window.addEventListener('DOMContentLoaded', () => {
+  // 1. Schauen, ob der Nutzer schon mal da war und eine Sprache gewählt hat
+  let savedLang = localStorage.getItem('preferredLang');
+  
+  if (savedLang) {
+    changeLanguage(savedLang);
+  } else {
+    // 2. Wenn nicht, die Systemsprache des Computers/Browsers auslesen
+    let browserLang = navigator.language || navigator.userLanguage;
+    browserLang = browserLang.substring(0, 2).toLowerCase(); // z.B. "en-US" -> "en"
+    
+    // Prüfen ob wir die Sprache anbieten, sonst Deutsch als Standard
+    if (translations[browserLang]) {
+      changeLanguage(browserLang);
+    } else {
+      changeLanguage('de'); 
+    }
+  }
+});
+</script>
 
 </body>
 </html>
