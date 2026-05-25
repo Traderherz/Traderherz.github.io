@@ -525,13 +525,11 @@ footer {
 
 <header>
 
-  <div class="hero-badge">
-    S&P500 · Futures · Marktanalyse · Trading Setups
-  </div>
+  
 
   <div class="logo-ring">
     <div class="logo-inner">
-      <img src="DEIN-LOGO-HIER.png" alt="Traderherz">
+      <img src="traderherz Logo weiss auf schwarz.bmp" alt="Traderherz Logo">
     </div>
   </div>
 
