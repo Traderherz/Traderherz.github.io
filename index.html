@@ -34,6 +34,19 @@ h2{color:var(--accent);margin:14px 0}
 footer{border-top:1px solid var(--border);margin-top:80px;padding:40px 0}
 .footer-links{display:flex;gap:20px;margin-top:10px;flex-wrap:wrap}
 .risk{margin-top:40px;padding:24px;background:#08101c;border:1px solid var(--border);border-radius:14px;color:var(--muted)}
+.cta-wrap{text-align:center;margin-top:52px}
+.cta-btn{
+display:inline-flex;align-items:center;gap:12px;
+padding:20px 42px;
+background:linear-gradient(135deg,var(--accent),#00b8a0);
+color:#07111f;font-family:Inter,sans-serif;font-weight:700;font-size:1.05rem;
+border:none;border-radius:14px;cursor:pointer;text-decoration:none;
+box-shadow:0 0 32px rgba(0,229,195,.28),0 4px 24px rgba(0,0,0,.35);
+transition:transform .2s,box-shadow .2s;
+letter-spacing:.01em;
+}
+.cta-btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 0 52px rgba(0,229,195,.45),0 8px 32px rgba(0,0,0,.4)}
+.cta-btn svg{flex-shrink:0}
 .cookie{position:fixed;bottom:20px;left:20px;right:20px;background:#0d1727;padding:18px;border:1px solid var(--border);border-radius:12px;display:none;z-index:1000}
 .cookie button{margin-left:10px;padding:8px 12px}
 @media(max-width:900px){
@@ -100,6 +113,14 @@ footer{border-top:1px solid var(--border);margin-top:80px;padding:40px 0}
 <h3 data-i18n="f4t"></h3><p data-i18n="f4d"></p>
 </div></div>
 </div>
+
+<div class="cta-wrap">
+  <a href="#briefing" class="cta-btn" data-i18n-href="ctahref">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+    <span data-i18n="cta"></span>
+  </a>
+</div>
+
 </section>
 
 <footer class="container" id="kontakt">
@@ -137,7 +158,8 @@ copyright:"© 2026 Copyright Traderherz.com - Alle Rechte vorbehalten.",
 imprint:"Impressum",privacy:"Datenschutzerklärung",risklink:"Risikohinweis",
 risktitle:"Risikohinweis",
 risktext:"Investieren ist spekulativ. 60% - 85% der privaten Trading Konten verlieren Geld beim Handel. Riskieren Sie nur Kapital, dessen Verlust Sie tragen können. Diese Webseite ist keine Anlageberatung. Traderherz führt keine Anlageberatung durch und verwaltet keine Kundengelder.",
-cookie:"Diese Website verwendet Cookies für eine optimale Nutzererfahrung."
+cookie:"Diese Website verwendet Cookies für eine optimale Nutzererfahrung.",
+cta:"Zugang zu deinem Weekly SP500 Briefing"
 },
 en:{
 badge:"Every Sunday before market open",
@@ -152,7 +174,8 @@ copyright:"© 2026 Copyright Traderherz.com - All rights reserved.",
 imprint:"Legal Notice",privacy:"Privacy Policy",risklink:"Risk Disclaimer",
 risktitle:"Risk Disclaimer",
 risktext:"Investing is speculative. Most retail accounts lose money when trading. Never risk capital you cannot afford to lose. This website is not investment advice.",
-cookie:"This website uses cookies to improve your experience."
+cookie:"This website uses cookies to improve your experience.",
+cta:"Access Your Weekly SP500 Briefing"
 },
 es:{
 badge:"Cada domingo antes de la apertura",
@@ -167,7 +190,8 @@ copyright:"© 2026 Traderherz.com - Todos los derechos reservados.",
 imprint:"Aviso Legal",privacy:"Política de Privacidad",risklink:"Aviso de Riesgo",
 risktitle:"Aviso de Riesgo",
 risktext:"Invertir es especulativo. Nunca arriesgue capital que no pueda perder. Este sitio no proporciona asesoramiento financiero.",
-cookie:"Este sitio utiliza cookies para mejorar la experiencia."
+cookie:"Este sitio utiliza cookies para mejorar la experiencia.",
+cta:"Accede a tu Informe Semanal SP500"
 }};
 
 function setLang(l){
